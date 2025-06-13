@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortLink | Вход</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Левая часть с иллюстрацией -->
+        <div class="auth-illustration">
+            <div class="logo">
+                <i class="fas fa-link"></i>
+                <span>ShortLink</span>
+            </div>
+            <div class="illustration">
+                <img src="assets/link-share.svg" alt="Обмен ссылками" class="illustration-img">
+            </div>
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Мгновенное сокращение ссылок</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Детальная аналитика</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <span>Безопасное хранение</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая часть с формой -->
+        <div class="auth-form">
+            <div class="form-container">
+                <h1 class="form-title">Добро пожаловать!</h1>
+                <p class="form-subtitle">Войдите, чтобы управлять своими ссылками</p>
+
+                <form id="login-form" class="animated-form">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Пароль</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password" aria-label="Показать пароль">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <span>Запомнить меня</span>
+                        </label>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Войти</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="divider">
+                        <span>или</span>
+                    </div>
+
+                    <button type="button" class="btn btn-google">
+                        <i class="fab fa-google"></i>
+                        <span>Войти через Google</span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    Ещё нет аккаунта? <a href="register.html" class="signup-link">Зарегистрируйтесь</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    <script src="../utils.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

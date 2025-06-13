@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ссылка не найдена | ShortLink</title>
+    <link rel="stylesheet" href="unknown.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="not-found-page">
+    <div class="particles-container" id="particles-js"></div>
+    
+    <div class="container">
+        <header class="not-found-header">
+            <div class="logo">
+                <i class="fas fa-link"></i>
+                <span>ShortLink</span>
+            </div>
+            <a href="../main/main.html" class="btn btn-ghost">
+                <i class="fas fa-home"></i> <span>На главную</span>
+            </a>
+        </header>
+
+        <main class="not-found-content">
+            <div class="error-card">
+                <div class="error-illustration">
+                    <svg width="200" height="200" viewBox="0 0 200 200" class="link-broken">
+                        <path class="link-chain" d="M50,100 Q75,50 100,100 Q125,150 150,100" />
+                        <circle class="link-circle" cx="50" cy="100" r="15" />
+                        <circle class="link-circle" cx="150" cy="100" r="15" />
+                        <path class="link-break" d="M90,90 L110,110 M90,110 L110,90" />
+                    </svg>
+                </div>
+                
+                <div class="error-text">
+                    <h1>Ссылка не найдена</h1>
+                    <p class="error-description">
+                        Похоже, этой короткой ссылки больше не существует. Возможно, она была удалена или срок её действия истёк.
+                    </p>
+                    
+                    <div class="action-buttons">
+                        <a href="main.html" class="btn btn-primary btn-icon">
+                            <i class="fas fa-plus"></i>
+                            <span>Создать новую ссылку</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+        </main>
+        
+        <footer class="not-found-footer">
+            <p>Нужна помощь? <a href="support.html">Свяжитесь с нами</a></p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="unknown.js"></script>
+</body>
+</html>

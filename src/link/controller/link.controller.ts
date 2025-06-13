@@ -4,6 +4,8 @@ import { Request, Response } from "express";
 import { CreateLinkRequest, errors } from "../dto/link.dto";
 import { AnalyticsService } from "src/analytics/service/analytics.service";
 
+const errorPageUrl = "http://localhost:3000/unknown/unknown.html"
+
 @Controller('link')
 export class LinkController {
     constructor(private readonly linkService: LinkService, private readonly analyticsService: AnalyticsService) {}
@@ -15,9 +17,10 @@ export class LinkController {
             res.status(300).redirect(response.original_url)
             id = response.id
         } catch (e) {
-            res.json({error: errors.NoSuchLink}).status(400).end()
+            res.status(400).redirect(errorPageUrl)
             return
         }
+
         if (id != 0) {
             try {
             await this.analyticsService.trackClick(id, 

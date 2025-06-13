@@ -16,7 +16,7 @@ export class AuthController {
         }
         try {
             await this.authService.login(body, res)
-            res.status(204).end()
+            res.json({}).status(204).end()
         } catch(e) {
             if (e == authErrors.authFail) {
                 res.json({error: e.message}).status(400).end()

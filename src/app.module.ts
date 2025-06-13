@@ -8,7 +8,7 @@ import { join } from 'path';
 
 @Module({
   imports: [TestModule, AuthModule, LinkModule, AnalyticsModule, ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '..', '..', 'frontend')})],
+    rootPath: join(__dirname, '..', 'frontend')})],
   controllers: [],
   providers: [],
 })

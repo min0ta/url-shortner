@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация | ShortLink</title>
+    <link rel="stylesheet" href="register.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Левая часть с иллюстрацией -->
+        <div class="auth-hero">
+            <div class="logo">
+                <i class="fas fa-link"></i>
+                <span>ShortLink</span>
+            </div>
+            <div class="hero-image">
+                <img src="login.svg" alt="Регистрация">
+            </div>
+        </div>
+
+        <!-- Правая часть с формой -->
+        <div class="auth-form">
+            <div class="form-container">
+                <h1>Создать аккаунт</h1>
+                <p class="subtitle">Зарегистрируйтесь, чтобы получить доступ ко всем возможностям</p>
+
+                <form id="register-form" class="animated-form">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Пароль</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Не менее 8 символов" required>
+                            <button type="button" class="toggle-password" aria-label="Показать пароль">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-label">Сложность пароля: <span>слабый</span></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirm-password">Подтвердите пароль</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirm-password" placeholder="Повторите пароль" required>
+                        </div>
+                    </div>
+
+                    <div class="terms-agreement">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Я принимаю <a href="#">Условия использования</a> и <a href="#">Политику конфиденциальности</a></label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span class="btn-text">Зарегистрироваться</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="divider">
+                        <span>или</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <button type="button" class="btn btn-google">
+                            <i class="fab fa-google"></i>
+                            <span>Продолжить с Google</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    Уже есть аккаунт? <a href="login.html">Войдите</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    <script src="../utils.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

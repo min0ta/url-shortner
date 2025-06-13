@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortLink Manager</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-link"></i>
+                <span>ShortLink Manager</span>
+            </div>
+        </header>
+        
+        <div class="main-layout">
+            <div class="main-content">
+                <div class="card" id="links-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-list"></i> Все ваши ссылки
+                    </h2>
+                    
+                    <div class="links-container">
+                        <div class="links-header">
+                            <div>Короткая ссылка</div>
+                            <div>Оригинальный URL</div>
+                            <div>Действия</div>
+                        </div>
+                        
+                        <div id="links-list">
+                            <!-- Ссылки будут добавляться здесь динамически -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Контейнер для статистики конкретной ссылки -->
+                <div class="card link-stats-container" id="link-stats-container">
+                    <div class="link-stats-header">
+                        <div>
+                            <div class="link-stats-title">
+                                <i class="fas fa-chart-line"></i>
+                                <span id="stats-link-title">Статистика ссылки</span>
+                            </div>
+                            <div class="link-stats-url" id="stats-full-url"></div>
+                        </div>
+                        <button class="btn btn-sm" id="back-to-list-btn">
+                            <i class="fas fa-arrow-left"></i> Назад
+                        </button>
+                    </div>
+                    
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="stats-total-clicks">0</div>
+                            <div class="stat-label">Всего кликов</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-value" id="stats-unique-visitors">0</div>
+                            <div class="stat-label">Уникальные посетители</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-chart-container">
+                        График кликов по дням
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fas fa-plus-circle"></i> Создать новую ссылку
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label for="original-url">Длинный URL:</label>
+                        <input type="url" id="original-url" placeholder="https://example.com/very-long-url" required>
+                    </div>
+                    
+                    <button id="create-btn" class="btn">
+                        <i class="fas fa-magic"></i> Создать ссылку
+                    </button>
+                    
+                    <div class="result-container" id="result-container">
+                        <h3>Ссылка успешно создана!</h3>
+                        <div class="short-url" id="short-url">
+                            <span id="short-code">abcd123</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <button id="copy-btn" class="btn btn-sm">
+                                <i class="far fa-copy"></i> Скопировать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">Ссылка скопирована в буфер обмена!</div>
+    <script src="../utils.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
