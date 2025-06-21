@@ -67,6 +67,9 @@ const api = {
     },
     getAllLinks: async () => {
         const a = await web.get('link')
+        if (a.error) {
+            document.location.href = "../login/login.html"
+        }
         console.log(a)
         return a
     },
