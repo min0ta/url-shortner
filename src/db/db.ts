@@ -1,9 +1,12 @@
 import { Pool } from "pg"
 import { Config, config } from "src/config/config"
-import { Analytics, User, nullUser } from "./models"
+import { Analytics, Link, User, nullUser } from "./models"
+import { Redis } from "ioredis"
+
 
 class Database {
     pool: Pool
+    redis: Redis
     constructor(config: Config) {
         this.pool = new Pool({
             host: config.DB_HOST,
@@ -12,6 +15,7 @@ class Database {
             database: config.DB_NAME,
             port: config.DB_PORT,
         })
+        this.redis = new Redis()
     }
     async getUserByEmail(email: string): Promise<User | 0> {
         const q = await this.pool.query(`SELECT id, email, pwd FROM users WHERE email = $1`, [email])
@@ -30,11 +34,23 @@ class Database {
         return q.rows[0]
     }
 
-    async getLink(alias: string) {
+    async getLink(alias: string): Promise<Link> {
+        const cachedResult = await this.redis.get(alias)
+        if (cachedResult != null) {
+            console.log('cached')
+            return JSON.parse(cachedResult)
+        }
         const result = await this.pool.query(`
                 SELECT original_url, id, user_id FROM short_urls WHERE short_code = $1
             `, [alias])
-        return {original_url: result.rows[0].original_url as string, id: result.rows[0].id as number, user_id: result.rows[0].user_id as number}
+
+        const data: Link = {
+            original_url: result.rows[0].original_url,
+            id: +result.rows[0].id,
+            user_id: +result.rows[0].user_id
+        }
+        this.cacheResult(alias, data)
+        return data
     }
     async insertLink(original_url: string, short_code: string, user_id?: number): Promise<number> {
         const result = await this.pool.query(`
@@ -63,10 +79,17 @@ class Database {
         return result.rows
     }
 
-    async getAllLinks(id: number) {
+    async getAllLinks(id: number): Promise<Link[]> {
         const result = await this.pool.query(`SELECT id, short_code, original_url, created FROM short_urls WHERE user_id = $1`, [id])
         return result.rows
     }
+    private cacheResult(short:string, link: Link) {
+        this.redis.set(short, JSON.stringify(link))
+    }
 }
 
-export const db = new Database(config)
+
+const db = new Database(config)
+// db.redis.connect()
+
+export {db}

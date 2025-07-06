@@ -11,3 +11,9 @@ export type Analytics = {
     date: Date,
     unique_visitors: number
 }
+
+export type Link = {
+    original_url: string,
+    id: number,
+    user_id: number
+}
